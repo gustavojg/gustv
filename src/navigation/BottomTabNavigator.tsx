@@ -1,5 +1,5 @@
 import React from 'react';
-import {Platform, StatusBar} from 'react-native';
+import {Platform, StatusBar, TouchableOpacity} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {BottomTabParamList} from './AppNavigator.types';
@@ -18,7 +18,21 @@ const BottomTabNavigator: React.FC = () => {
     <Tab.Navigator
       initialRouteName="EPG"
       screenOptions={({route}) => ({
-        header: () => <Header />,
+        header: () => (
+          <Header
+            backgroundColor={DARK_BG_COLOR}
+            leftElement={
+              <TouchableOpacity onPress={() => console.log('Profile pressed')}>
+                <Icon name="person" size={35} color="white" />
+              </TouchableOpacity>
+            }
+            rightElement={
+              <TouchableOpacity onPress={() => console.log('Search pressed')}>
+                <Icon name="search" size={35} color="white" />
+              </TouchableOpacity>
+            }
+          />
+        ),
         headerStyle: {
           paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
           backgroundColor: DARK_BG_COLOR,
@@ -31,12 +45,13 @@ const BottomTabNavigator: React.FC = () => {
         tabBarStyle: {
           borderTopWidth: 0,
           backgroundColor: BACKGROUND_COLOR,
-          paddingBottom: 25,
-          elevation: 10,
+          paddingTop: Platform.OS === 'ios' ? 0 : 5,
+          paddingBottom: Platform.OS === 'ios' ? 25 : 0,
           shadowColor: '#000',
           shadowOffset: {width: 0, height: 2},
           shadowOpacity: 1,
           shadowRadius: 6,
+          elevation: 10,
         },
         tabBarActiveTintColor: '#e1a21e',
         tabBarInactiveTintColor: '#fff',

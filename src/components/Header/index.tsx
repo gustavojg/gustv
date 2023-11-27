@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {View, Image, TouchableOpacity, StatusBar} from 'react-native';
+import {View, Image, TouchableOpacity, StatusBar, Platform} from 'react-native';
 import {styles} from './styles';
+import {images} from '../../constants/images';
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  leftElement: ReactNode;
+  rightElement: ReactNode;
+  backgroundColor: string
+}
+
+const Header: React.FC<HeaderProps> = ({leftElement, rightElement, backgroundColor}) => {
   return (
-    <View style={styles.headerContainer}>
-      <StatusBar barStyle="light-content" />
-      <TouchableOpacity onPress={() => console.log('Profile pressed')}>
-        <Icon name="person" size={35} color="white" />
-      </TouchableOpacity>
-      <Image
-        source={require('../../assets/logo.jpg')}
-        style={styles.logo}
-        resizeMode="contain"
+    <View style={{...styles.headerContainer, backgroundColor}}>
+      <StatusBar
+        barStyle={Platform.OS === 'android' ? 'dark-content' : 'light-content'}
       />
-      <TouchableOpacity onPress={() => console.log('Search pressed')}>
-        <Icon name="search" size={35} color="white" />
-      </TouchableOpacity>
+      {leftElement}
+      <Image source={images.logo} style={styles.logo} resizeMode="contain" />
+      {rightElement}
     </View>
   );
 };

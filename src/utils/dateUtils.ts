@@ -48,3 +48,14 @@ export function isCurrentDay(day: number, month: number): boolean {
   const today = new Date();
   return today.getDate() === day && today.getMonth() + 1 === month;
 }
+
+export const calculateWidth = (
+  start: string,
+  end: string,
+  timeUnitWidth: number = 100,
+): number => {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  const duration = (endDate.getTime() - startDate.getTime()) / 3600000;
+  return duration * timeUnitWidth;
+};

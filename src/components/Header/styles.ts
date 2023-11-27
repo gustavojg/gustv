@@ -1,5 +1,5 @@
-import {Platform, StatusBar, StyleSheet} from 'react-native';
-import {DARK_BG_COLOR, LIGHT_TEXT_COLOR} from '../../constants';
+import {Platform, StyleSheet} from 'react-native';
+import {LIGHT_TEXT_COLOR} from '../../constants';
 
 export const styles = StyleSheet.create({
   headerContainer: {
@@ -8,8 +8,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 10,
     paddingHorizontal: 15,
-    backgroundColor: DARK_BG_COLOR,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 40,
+    paddingTop: Platform.OS === 'android' ? 10 : 40,
   },
   icon: {
     width: 35,

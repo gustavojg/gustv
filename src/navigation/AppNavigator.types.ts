@@ -1,6 +1,6 @@
 export type RootStackParamList = {
   Tabs: undefined;
-  Detail: undefined;
+  Detail: {itemId: string};
 };
 
 export type BottomTabParamList = {
@@ -11,4 +11,4 @@ export type BottomTabParamList = {
   BookMark: undefined;
 };
 
-//Detail: {itemId: number}; 
+//Detail: {itemId: number};

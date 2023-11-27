@@ -5,6 +5,7 @@ import {BottomTabParamList} from '../navigation/AppNavigator.types';
 import {ChannelContext} from '../context/ChannelContext';
 import {ChannelGuide} from '../components/ChannelGuide';
 import {BACKGROUND_COLOR} from '../constants';
+import Loader from '../components/Loader';
 
 type EpgScreenScreenProp = RouteProp<BottomTabParamList, 'EPG'>;
 
@@ -15,7 +16,7 @@ interface EpgScreenScreenProps {
 const EpgScreen: React.FC<EpgScreenScreenProps> = () => {
   const {channels, isLoading, error} = useContext(ChannelContext);
 
-  if (isLoading) return <ActivityIndicator />;
+  if (isLoading) return <Loader />;
   if (error) return <Text>Error loading channels</Text>;
 
   return (

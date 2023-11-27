@@ -6,7 +6,6 @@ import {
   ListRenderItem,
   Text,
   ListRenderItemInfo,
-  Button,
   TouchableOpacity,
   Image,
 } from 'react-native';
@@ -26,7 +25,6 @@ interface ChannelGuideProps {
 }
 
 const renderItem: ListRenderItem<Channel> = ({item}) => {
-  //console.log();
   return (
     <View style={styles.programContainer}>
       <View>
@@ -42,7 +40,6 @@ const renderItem: ListRenderItem<Channel> = ({item}) => {
 const renderFixedItem = ({item}: ListRenderItemInfo<Channel>) => (
   <View style={styles.channelContainer}>
     <Image source={images[item.id]} style={styles.logo} />
-    {/*<Text style={styles.channelTitle}>{item.title}</Text>*/}
   </View>
 );
 
