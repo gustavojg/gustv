@@ -3,6 +3,8 @@
 
 This a demo of tv application with EPG section an detail
 
+https://github.com/gustavojg/gustv/assets/3509651/82ec64ff-ecd8-4574-b92c-55a2859a7ef8
+
 ## Installation
 
 Follow these steps to install the project dependencies and set up your environment.
