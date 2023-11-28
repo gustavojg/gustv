@@ -3,7 +3,7 @@
 
 This a demo of tv application with EPG section an detail
 
-https://github.com/gustavojg/gustv/assets/3509651/82ec64ff-ecd8-4574-b92c-55a2859a7ef8
+https://github.com/gustavojg/gustv/assets/3509651/363df459-a255-49be-90c7-a163978f5ff0
 
 ## Installation
 
