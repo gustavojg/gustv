@@ -11,7 +11,7 @@ const CurrentTime: React.FC<CurrentTimeProps> = ({
 }) => (
   <View style={{...styles.container, left: currentTimeIndicatorPosition}}>
     <View style={styles.boldLine} />
-    <View style={styles.thinLine}></View>
+    <View style={styles.thinLine} />
   </View>
 );
 

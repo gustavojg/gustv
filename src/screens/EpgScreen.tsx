@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {BottomTabParamList} from '../navigation/AppNavigator.types';
 import {ChannelContext} from '../context/ChannelContext';
@@ -16,8 +16,12 @@ interface EpgScreenScreenProps {
 const EpgScreen: React.FC<EpgScreenScreenProps> = () => {
   const {channels, isLoading, error} = useContext(ChannelContext);
 
-  if (isLoading) return <Loader />;
-  if (error) return <Text>Error loading channels</Text>;
+  if (isLoading) {
+    return <Loader />;
+  }
+  if (error) {
+    return <Text>Error loading channels</Text>;
+  }
 
   return (
     <View style={styles.container}>

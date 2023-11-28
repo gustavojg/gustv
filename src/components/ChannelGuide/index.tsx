@@ -58,7 +58,7 @@ export const ChannelGuide: React.FC<ChannelGuideProps> = ({channels}) => {
   } = useChannelGuide();
 
   return (
-    <View style={{flex: 1, flexDirection: 'column'}}>
+    <View style={styles.mainContainer}>
       <DaySelector />
       <View style={styles.container}>
         <View style={styles.fixedColumn}>
@@ -76,8 +76,8 @@ export const ChannelGuide: React.FC<ChannelGuideProps> = ({channels}) => {
           onScrollBeginDrag={handleManualScroll}
           ref={scrollViewRef}
           scrollEventThrottle={16}
-          onContentSizeChange={(width, height) => {
-            handleContentSizeChange(width, height);
+          onContentSizeChange={width => {
+            handleContentSizeChange(width);
           }}
           style={styles.horizontalScrollView}>
           <ChannelsList data={channels} />

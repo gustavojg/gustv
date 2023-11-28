@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import { RouteProp } from '@react-navigation/native';
-import { BottomTabParamList } from '../navigation/AppNavigator.types';
+import {View, Text} from 'react-native';
+import {RouteProp} from '@react-navigation/native';
+import {BottomTabParamList} from '../navigation/AppNavigator.types';
 
 type LiveTvScreenRouteProp = RouteProp<BottomTabParamList, 'LiveTv'>;
 

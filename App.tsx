@@ -2,7 +2,7 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './src/navigation/AppNavigator';
 import {ChannelProvider} from './src/context/ChannelContext';
-import {SafeAreaView, useColorScheme} from 'react-native';
+import {useColorScheme} from 'react-native';
 import {StatusBar} from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 

@@ -5,8 +5,8 @@ import {RootStackParamList} from './AppNavigator.types';
 import DetailsScreen from '../screens/DetailScreen';
 import Header from '../components/Header';
 import {DARK_BG_COLOR} from '../constants';
-import {Platform, StatusBar, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {Platform, StatusBar} from 'react-native';
+import HeaderButton from '../components/HeaderButton';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -20,18 +20,21 @@ const AppNavigator: React.FC = () => {
         },
         headerShown: true,
         headerTransparent: true,
+        // eslint-disable-next-line react/no-unstable-nested-components
         header: () => (
           <Header
-            backgroundColor='transparent'
+            backgroundColor="transparent"
             leftElement={
-              <TouchableOpacity onPress={() => navigation.goBack()}>
-                <Icon name="arrow-back-ios" size={35} color="white" />
-              </TouchableOpacity>
+              <HeaderButton
+                icon="arrow-back-ios"
+                onPress={() => navigation.goBack()}
+              />
             }
             rightElement={
-              <TouchableOpacity onPress={() => console.log('Search pressed')}>
-                <Icon name="search" size={35} color="white" />
-              </TouchableOpacity>
+              <HeaderButton
+                icon="search"
+                onPress={() => console.log('Search Pressed')}
+              />
             }
           />
         ),
@@ -41,10 +44,7 @@ const AppNavigator: React.FC = () => {
         component={BottomTabNavigator}
         options={{headerShown: false}}
       />
-      <Stack.Screen
-        name="Detail"
-        component={DetailsScreen}
-      />
+      <Stack.Screen name="Detail" component={DetailsScreen} />
     </Stack.Navigator>
   );
 };

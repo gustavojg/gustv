@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     width: 5,
     height: '100%',
     zIndex: 200,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   thinLine: {width: 1, height: '100%', backgroundColor: TIMER_COLOR},
 });

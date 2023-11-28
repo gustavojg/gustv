@@ -1,6 +1,10 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import { BACKGROUND_COLOR, LIGHT_TEXT_COLOR, TIME_WIDTH_UNIT } from '../../constants';
+import {
+  BACKGROUND_COLOR,
+  LIGHT_TEXT_COLOR,
+  TIME_WIDTH_UNIT,
+} from '../../constants';
 
 const TimeIndicator: React.FC = () => {
   const hours = Array.from({length: 24}, (_, index) => {
@@ -25,15 +29,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: BACKGROUND_COLOR,
     height: 50,
-    paddingTop: 38
+    paddingTop: 38,
   },
   hourContainer: {
     width: TIME_WIDTH_UNIT,
     justifyContent: 'center',
     alignItems: 'flex-start',
-    borderRightWidth: .5,
+    borderRightWidth: 0.5,
     borderRightColor: 'gray',
-    borderLefttWidth: .5,
+    borderLefttWidth: 0.5,
     borderLeftColor: 'gray',
   },
   hourText: {
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingHorizontal: 10,
     marginLeft: -31.5,
-    marginTop: -32
+    marginTop: -32,
   },
 });
 

@@ -1,6 +1,6 @@
 import Config from 'react-native-config';
 import {ChannelsData} from '../models/ChannelModel';
-import { Programme } from '../models/ProgrammeModel';
+import {Programme} from '../models/ProgrammeModel';
 
 const apiUrl = Config.API_URL;
 

@@ -8,12 +8,11 @@ type DayItem = {
   date: string;
 };
 
-const days = getWeekDaysAroundToday();
-
 const DaySelector: React.FC = () => {
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
 
   useEffect(() => {
+    const days = getWeekDaysAroundToday();
     days.some(item => {
       const date = item.date.split('.');
       const isToday = isCurrentDay(Number(date[0]), Number(date[1]));
@@ -23,9 +22,9 @@ const DaySelector: React.FC = () => {
       }
       return false;
     });
-  }, [days]);
+  }, []);
 
-  const renderItem = ({item, index}: {item: DayItem; index: number}) => {
+  const renderItem = ({item}: {item: DayItem}) => {
     const isSelected = item.day === selectedDay;
     return (
       <TouchableOpacity

@@ -29,16 +29,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: 'transparent',
   },
+  mainContainer: {flex: 1, flexDirection: 'column'},
   logo: {
     width: IMAGE_WIDTH,
     height: IMAGE_HEIGHT,
     resizeMode: 'contain',
-  },
-  stickyHeader: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#ccc',
-    padding: 10,
   },
   channelTitle: {
     color: LIGHT_TEXT_COLOR,
@@ -74,8 +69,8 @@ export const styles = StyleSheet.create({
     bottom: 20,
   },
   text: {
-    color: 'white', // Color de texto negro
-    fontWeight: 'bold', // Negrita
-    fontSize: 18, // Tamaño del texto
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });

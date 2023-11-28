@@ -28,15 +28,19 @@ const DetailScreen: React.FC<ProgrammeDetailsProps> = ({route}) => {
 
   useEffect(() => {
     fetchProgramme(itemId);
-  }, [itemId]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  if (programmeLoading) return <Loader />;
-  if (programmeError)
+  if (programmeLoading) {
+    return <Loader />;
+  }
+  if (programmeError) {
     return (
       <View style={styles.container}>
         <Text>Error: {programmeError}</Text>
       </View>
     );
+  }
   return (
     <ScrollView style={styles.container}>
       <ImageBackground

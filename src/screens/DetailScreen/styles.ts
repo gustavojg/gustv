@@ -4,7 +4,7 @@ import {DARK_BG_COLOR, IMAGE_HEIGHT, IMAGE_WIDTH} from '../../constants';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: DARK_BG_COLOR, // Asumiendo un fondo negro como en la imagen
+    backgroundColor: DARK_BG_COLOR,
   },
   textsContainer: {flexDirection: 'row', marginBottom: 20},
   image: {

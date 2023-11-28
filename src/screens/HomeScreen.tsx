@@ -12,11 +12,15 @@ interface HomeScreenProps {
   navigation: HomeScreenNavigationProp;
 }
 
-const HomeScreen: React.FC<HomeScreenProps> = ({navigation}) => {
+const HomeScreen: React.FC<HomeScreenProps> = () => {
   const {channels, isLoading, error} = useContext(ChannelContext);
 
-  if (isLoading) return <ActivityIndicator />;
-  if (error) return <Text>Error loading channels</Text>;
+  if (isLoading) {
+    return <ActivityIndicator />;
+  }
+  if (error) {
+    return <Text>Error loading channels</Text>;
+  }
 
   return (
     <View style={styles.container}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Platform, StatusBar, TouchableOpacity} from 'react-native';
+import {Platform, StatusBar} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {BottomTabParamList} from './AppNavigator.types';
@@ -10,6 +10,7 @@ import RePlayScreen from '../screens/RePlayScreen';
 import BookmarkScreen from '../screens/BookmarkScreen';
 import Header from '../components/Header';
 import {BACKGROUND_COLOR, DARK_BG_COLOR} from '../constants';
+import HeaderButton from '../components/HeaderButton';
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -18,18 +19,21 @@ const BottomTabNavigator: React.FC = () => {
     <Tab.Navigator
       initialRouteName="EPG"
       screenOptions={({route}) => ({
+        // eslint-disable-next-line react/no-unstable-nested-components
         header: () => (
           <Header
             backgroundColor={DARK_BG_COLOR}
             leftElement={
-              <TouchableOpacity onPress={() => console.log('Profile pressed')}>
-                <Icon name="person" size={35} color="white" />
-              </TouchableOpacity>
+              <HeaderButton
+                icon="person"
+                onPress={() => console.log('Profile pressed')}
+              />
             }
             rightElement={
-              <TouchableOpacity onPress={() => console.log('Search pressed')}>
-                <Icon name="search" size={35} color="white" />
-              </TouchableOpacity>
+              <HeaderButton
+                icon="search"
+                onPress={() => console.log('Search pressed')}
+              />
             }
           />
         ),
@@ -58,7 +62,8 @@ const BottomTabNavigator: React.FC = () => {
         tabBarLabelStyle: {
           fontSize: 12,
         },
-        tabBarIcon: ({focused, color, size}) => {
+        // eslint-disable-next-line react/no-unstable-nested-components
+        tabBarIcon: ({color, size}) => {
           let iconName = '';
           switch (route.name) {
             case 'Home':

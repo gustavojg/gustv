@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {Dimensions, FlatList, ScrollView} from 'react-native';
 import {Channel} from '../../models/ChannelModel';
 import {calculateTimeIndicatorPosition} from '../../utils/dateUtils';
@@ -31,20 +31,22 @@ const useChannelGuide = () => {
           scrollToCurrentTime(contentWidth);
         }
       }, 5000);
-      if (!isAutoScrolling) clearInterval(interval);
+      if (!isAutoScrolling) {
+        clearInterval(interval);
+      }
       return () => clearInterval(interval);
     }
   }, [isAutoScrolling, contentWidth]);
 
-  const handleContentSizeChange = (width: number, height: number) => {
+  const handleContentSizeChange = (width: number) => {
     setContentWidth(width);
   };
 
-  const enableAutoScroll = (evt: any) => {
+  const enableAutoScroll = () => {
     setIsAutoScrolling(true);
   };
 
-  const handleManualScroll = (evt: any) => {
+  const handleManualScroll = () => {
     setIsAutoScrolling(false);
   };
 
@@ -55,11 +57,10 @@ const useChannelGuide = () => {
     });
   };
 
-  const scrollToCurrentTime = (contentWidth: number) => {
+  const scrollToCurrentTime = (cw: number) => {
     scrollViewRef.current?.scrollTo({
       x:
-        calculateTimeIndicatorPosition(contentWidth) -
-        Dimensions.get('window').width / 3,
+        calculateTimeIndicatorPosition(cw) - Dimensions.get('window').width / 3,
       animated: true,
     });
   };

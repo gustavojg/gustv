@@ -56,7 +56,6 @@ export const ChannelProvider: React.FC<ChannelProviderProps> = ({children}) => {
     loadChannels();
   }, []);
 
-  // Función para cargar información de un programa en particular
   const fetchProgramme = async (id: string) => {
     setProgrammeLoading(true);
     setProgrammeError(null);
