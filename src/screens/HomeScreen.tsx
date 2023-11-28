@@ -1,10 +1,11 @@
 import React, {useContext} from 'react';
-import {View, Text, ActivityIndicator, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {BottomTabParamList} from '../navigation/AppNavigator.types';
 import {ChannelContext} from '../context/ChannelContext';
 import {ChannelGuide} from '../components/ChannelGuide';
 import {BACKGROUND_COLOR} from '../constants';
+import Loader from '../components/Loader';
 
 type HomeScreenNavigationProp = StackNavigationProp<BottomTabParamList, 'Home'>;
 
@@ -13,10 +14,11 @@ interface HomeScreenProps {
 }
 
 const HomeScreen: React.FC<HomeScreenProps> = () => {
-  const {channels, isLoading, error} = useContext(ChannelContext);
+  const {channels, favChannelsData, isLoading, error} =
+    useContext(ChannelContext);
 
   if (isLoading) {
-    return <ActivityIndicator />;
+    return <Loader />;
   }
   if (error) {
     return <Text>Error loading channels</Text>;
@@ -24,7 +26,7 @@ const HomeScreen: React.FC<HomeScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-      <ChannelGuide channels={channels} />
+      <ChannelGuide channels={channels} favChannels={favChannelsData} />
     </View>
   );
 };
