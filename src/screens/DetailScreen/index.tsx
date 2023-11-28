@@ -1,21 +1,12 @@
 import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  ScrollView,
-  ImageBackground,
-  TouchableOpacity,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import {View, Text, Image, ScrollView, ImageBackground} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {useChannel} from '../../context/ChannelContext';
 import {RootStackParamList} from '../../navigation/AppNavigator.types';
 import {RouteProp} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {images} from '../../constants/images';
+import {ImageKeys, images} from '../../constants/images';
 import Loader from '../../components/Loader';
-import Header from '../../components/Header';
 import {styles} from './styles';
 
 type DetailScreenRouteProp = RouteProp<RootStackParamList, 'Detail'>;
@@ -29,7 +20,7 @@ type ProgrammeDetailsProps = {
   navigation: DetailScreenNavigationProp;
 };
 
-const DetailScreen: React.FC<ProgrammeDetailsProps> = ({route, navigation}) => {
+const DetailScreen: React.FC<ProgrammeDetailsProps> = ({route}) => {
   const {fetchProgramme, programmeInfo, programmeLoading, programmeError} =
     useChannel();
 
@@ -46,26 +37,10 @@ const DetailScreen: React.FC<ProgrammeDetailsProps> = ({route, navigation}) => {
         <Text>Error: {programmeError}</Text>
       </View>
     );
-
   return (
     <ScrollView style={styles.container}>
-      <View style={{position: 'absolute', zIndex: 100, width: '100%'}}>
-        <Header
-          backgroundColor="transparent"
-          leftElement={
-            <TouchableOpacity onPress={() => navigation.goBack()}>
-              <Icon name="arrow-back-ios" size={35} color="white" />
-            </TouchableOpacity>
-          }
-          rightElement={
-            <TouchableOpacity onPress={() => console.log('Search pressed')}>
-              <Icon name="search" size={35} color="white" />
-            </TouchableOpacity>
-          }
-        />
-      </View>
       <ImageBackground
-        source={images.vikingsImg} // Reemplaza 'tu_imagen_aqui' con tu URL de imagen
+        source={images.vikingsImg}
         resizeMode="cover"
         style={styles.imageBackground}>
         <LinearGradient
@@ -83,11 +58,12 @@ const DetailScreen: React.FC<ProgrammeDetailsProps> = ({route, navigation}) => {
         <View style={styles.textsContainer}>
           <View style={styles.logoContainer}>
             <Image
-              source={images[programmeInfo?.channelId]}
+              source={
+                images[(programmeInfo?.channelId || 'noPhoto') as ImageKeys]
+              }
               style={styles.logo}
             />
           </View>
-
           <View>
             <Text style={styles.channelName}>
               {programmeInfo?.channelTitle}
@@ -103,7 +79,6 @@ const DetailScreen: React.FC<ProgrammeDetailsProps> = ({route, navigation}) => {
             </View>
           </View>
         </View>
-
         <Text style={styles.description}>{programmeInfo?.description}</Text>
         <Text style={styles.cast}>
           Cast: Wagner Moura, Boyd Holbruk, Pedro Pascal

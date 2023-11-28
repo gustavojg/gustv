@@ -1,16 +1,19 @@
-import React, { ReactNode } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {View, Image, TouchableOpacity, StatusBar, Platform} from 'react-native';
+import React, {ReactNode} from 'react';
+import {View, Image, StatusBar, Platform} from 'react-native';
 import {styles} from './styles';
 import {images} from '../../constants/images';
 
 interface HeaderProps {
   leftElement: ReactNode;
   rightElement: ReactNode;
-  backgroundColor: string
+  backgroundColor: string;
 }
 
-const Header: React.FC<HeaderProps> = ({leftElement, rightElement, backgroundColor}) => {
+const Header: React.FC<HeaderProps> = ({
+  leftElement,
+  rightElement,
+  backgroundColor,
+}) => {
   return (
     <View style={{...styles.headerContainer, backgroundColor}}>
       <StatusBar

@@ -18,7 +18,7 @@ import CurrentTime from '../CurrentTime';
 import {TIME_WIDTH_UNIT} from '../../constants';
 import DaySelector from '../DaysSelector';
 import useChannelGuide from './ChannelGuideHook';
-import {images} from '../../constants/images';
+import {ImageKeys, images} from '../../constants/images';
 
 interface ChannelGuideProps {
   channels: Channel[];
@@ -39,7 +39,7 @@ const renderItem: ListRenderItem<Channel> = ({item}) => {
 
 const renderFixedItem = ({item}: ListRenderItemInfo<Channel>) => (
   <View style={styles.channelContainer}>
-    <Image source={images[item.id]} style={styles.logo} />
+    <Image source={images[item.id as ImageKeys]} style={styles.logo} />
   </View>
 );
 
