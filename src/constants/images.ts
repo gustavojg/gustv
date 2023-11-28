@@ -28,7 +28,7 @@ export const images: ImagesType = {
   sixx: require('../assets/sixx.png'),
   tv2norway: require('../assets/tv2norway.png'),
   channel5: require('../assets/channel5.png'),
-  vikingsImg: require('../assets/vikings.jpg'),
+  vikingsImg: require('../assets/vikings.webp'),
   logo: require('../assets/logo.png'),
   noPhoto: require('../assets/noPhoto.png'),
 };
