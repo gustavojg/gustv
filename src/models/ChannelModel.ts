@@ -14,6 +14,10 @@ export interface Channel {
   schedules: Schedule[];
 }
 
+export interface FavChannel {
+  id: string;
+}
+
 export interface ChannelsData {
   channels: Channel[];
 }

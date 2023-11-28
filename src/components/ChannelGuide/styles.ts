@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     marginTop: 50,
     backgroundColor: BACKGROUND_COLOR,
     zIndex: 100,
-    shadowColor: '#000',
+    shadowColor: DARK_BG_COLOR,
     shadowOffset: {width: 0, height: 10},
     shadowOpacity: 0.8,
     shadowRadius: 5,
@@ -51,6 +51,7 @@ export const styles = StyleSheet.create({
   },
   horrizontalContainer: {
     flex: 1,
+    marginLeft: IMAGE_CELL_WIDTH,
   },
   button: {
     position: 'absolute',

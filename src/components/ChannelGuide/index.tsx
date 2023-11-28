@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   ScrollView,
   View,
@@ -13,7 +13,6 @@ import {ProgramRow} from '../ProgramRow';
 import {Channel} from '../../models/ChannelModel';
 import {styles} from './styles';
 import TimeIndicator from '../TimeIndicator';
-import ChannelsList from '../ChannelsList';
 import CurrentTime from '../CurrentTime';
 import {TIME_WIDTH_UNIT} from '../../constants';
 import DaySelector from '../DaysSelector';
@@ -22,6 +21,7 @@ import {ImageKeys, images} from '../../constants/images';
 
 interface ChannelGuideProps {
   channels: Channel[];
+  favChannels: Channel[];
 }
 
 const renderItem: ListRenderItem<Channel> = ({item}) => {
@@ -43,7 +43,10 @@ const renderFixedItem = ({item}: ListRenderItemInfo<Channel>) => (
   </View>
 );
 
-export const ChannelGuide: React.FC<ChannelGuideProps> = ({channels}) => {
+export const ChannelGuide: React.FC<ChannelGuideProps> = ({
+  channels,
+  favChannels,
+}) => {
   const {
     currentTimeIndicatorPosition,
     fixedListRef,
@@ -57,14 +60,16 @@ export const ChannelGuide: React.FC<ChannelGuideProps> = ({channels}) => {
     enableAutoScroll,
   } = useChannelGuide();
 
+  const [showFavs, setShowFavs] = useState<boolean>(false);
+
   return (
     <View style={styles.mainContainer}>
-      <DaySelector />
+      <DaySelector onPress={() => setShowFavs(!showFavs)} />
       <View style={styles.container}>
         <View style={styles.fixedColumn}>
           <FlatList
             ref={fixedListRef}
-            data={channels}
+            data={showFavs ? favChannels : channels}
             renderItem={renderFixedItem}
             keyExtractor={item => item.id}
             scrollEnabled={false}
@@ -80,7 +85,6 @@ export const ChannelGuide: React.FC<ChannelGuideProps> = ({channels}) => {
             handleContentSizeChange(width);
           }}
           style={styles.horizontalScrollView}>
-          <ChannelsList data={channels} />
           <View style={styles.horrizontalContainer}>
             <CurrentTime
               currentTimeIndicatorPosition={currentTimeIndicatorPosition}
@@ -88,7 +92,7 @@ export const ChannelGuide: React.FC<ChannelGuideProps> = ({channels}) => {
             <TimeIndicator />
             <FlatList
               ref={scrollListRef}
-              data={channels}
+              data={showFavs ? favChannels : channels}
               onScroll={onScroll}
               renderItem={renderItem}
               keyExtractor={item => item.id}

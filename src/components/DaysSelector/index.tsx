@@ -2,14 +2,21 @@ import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import {getWeekDaysAroundToday, isCurrentDay} from '../../utils/dateUtils';
 import {styles} from './styles';
+import HeaderButton from '../HeaderButton';
+import {CURRENT_PROGRAM_BG_COLOR} from '../../constants';
 
 type DayItem = {
   day: string;
   date: string;
 };
 
-const DaySelector: React.FC = () => {
+interface DaySelectorProps {
+  onPress: any;
+}
+
+const DaySelector: React.FC<DaySelectorProps> = ({onPress}) => {
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [favSelected, setFavSelected] = useState<boolean>(false);
 
   useEffect(() => {
     const days = getWeekDaysAroundToday();
@@ -38,6 +45,16 @@ const DaySelector: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.favButton}>
+        <HeaderButton
+          icon="star"
+          onPress={() => {
+            onPress();
+            setFavSelected(!favSelected);
+          }}
+          color={favSelected ? 'white' : CURRENT_PROGRAM_BG_COLOR}
+        />
+      </View>
       <FlatList
         data={getWeekDaysAroundToday()}
         renderItem={renderItem}

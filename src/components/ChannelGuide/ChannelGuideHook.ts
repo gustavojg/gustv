@@ -65,6 +65,10 @@ const useChannelGuide = () => {
     });
   };
 
+  const handleShowFavs = () => {
+    console.log('ShowFavs');
+  };
+
   return {
     currentTimeIndicatorPosition,
     fixedListRef,
@@ -75,6 +79,7 @@ const useChannelGuide = () => {
     setCurrentTimeIndicatorPosition,
     handleManualScroll,
     handleContentSizeChange,
+    handleShowFavs,
     scrollToCurrentTime,
     enableAutoScroll,
     onScroll,

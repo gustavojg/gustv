@@ -14,7 +14,8 @@ interface EpgScreenScreenProps {
 }
 
 const EpgScreen: React.FC<EpgScreenScreenProps> = () => {
-  const {channels, isLoading, error} = useContext(ChannelContext);
+  const {channels, favChannelsData, isLoading, error} =
+    useContext(ChannelContext);
 
   if (isLoading) {
     return <Loader />;
@@ -25,7 +26,7 @@ const EpgScreen: React.FC<EpgScreenScreenProps> = () => {
 
   return (
     <View style={styles.container}>
-      <ChannelGuide channels={channels} />
+      <ChannelGuide channels={channels} favChannels={favChannelsData} />
     </View>
   );
 };
