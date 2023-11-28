@@ -13,12 +13,18 @@ export const convertToLocalHourMinute = (isoDateStr: string): string => {
   return `${hours}:${minutes}`;
 };
 
-export function isCurrentTimeInRange(start: string, end: string): boolean {
+export function isCurrentTimeInRange(start: string, end: string): string {
   const startDate = new Date(start);
   const endDate = new Date(end);
   const now = new Date();
 
-  return now >= startDate && now <= endDate;
+  if (now < startDate) {
+    return 'future';
+  }
+  if (now > endDate) {
+    return 'ended';
+  }
+  return 'live';
 }
 
 type DayInfo = {
