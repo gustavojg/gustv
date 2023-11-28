@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   ScrollView,
   View,
@@ -54,13 +54,13 @@ export const ChannelGuide: React.FC<ChannelGuideProps> = ({
     scrollListRef,
     buttonRef,
     isAutoScrolling,
+    showFavs,
+    setShowFavs,
     handleManualScroll,
     handleContentSizeChange,
     onScroll,
     enableAutoScroll,
   } = useChannelGuide();
-
-  const [showFavs, setShowFavs] = useState<boolean>(false);
 
   return (
     <View style={styles.mainContainer}>

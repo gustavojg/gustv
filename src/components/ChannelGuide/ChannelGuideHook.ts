@@ -15,7 +15,7 @@ const useChannelGuide = () => {
   );
   const [currentTimeIndicatorPosition, setCurrentTimeIndicatorPosition] =
     useState(0);
-
+  const [showFavs, setShowFavs] = useState<boolean>(false);
   useEffect(() => {
     if (contentWidth > 0) {
       setCurrentTimeIndicatorPosition(
@@ -76,6 +76,8 @@ const useChannelGuide = () => {
     scrollListRef,
     buttonRef,
     isAutoScrolling,
+    showFavs,
+    setShowFavs,
     setCurrentTimeIndicatorPosition,
     handleManualScroll,
     handleContentSizeChange,
